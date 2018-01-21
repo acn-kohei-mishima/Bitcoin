@@ -75,5 +75,8 @@ $(function() {
   $( '#top_bid' ).html( Math.floor(topBid.bid) );
   $( '#difference' ).html( Math.floor(topBid.bid - topAsk.ask) );
 
+  document.getElementById('<?= bid_id ?>').style.backgroundColor = "#ffa0a0";
+  document.getElementById('<?= ask_id ?>').style.backgroundColor = "#a0ffa0";
+
 
 });
