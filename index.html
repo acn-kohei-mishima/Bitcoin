@@ -1,35 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <title>jQuery.getJSON demo</title>
-      <style>
-      img {
-        height: 100px;
-        float: left;
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript" ></script>
+    <script src="Bitcoin.js"></script>
+    <meta charset="utf-8" content="">
+    <base target="_top">
+    <style>
+      .tdcol {
+        display: inline-block;
+        width: 120px;
+        border: solid 1px #909090;
+        background-color: #eeeeee;
+        text-align: center;
+        font-weight: bold;
       }
-      </style>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+      .tdcol {
+        display: inline-block;
+        width: 120px;
+        border: solid 1px #909090;
+        text-align: center;
+      }
+    </style>
+    <title>Bitcoin Chart</title>
 </head>
+
+
+<!-- HTML部分 -->
 <body>
     <h1>Bitcoin Chart</h1>
-    <div id="images"></div>
-    <script>
-    (function() {
-      var flickerAPI = "https://api.bitflyer.jp/v1/ticker";
-      $.getJSON( flickerAPI, {
-        tags: "mount rainier",
-        tagmode: "any",
-        format: "json"
-      })
-        .done(function( data ) {
-          $.each( data.items, function( i, item ) {
-            $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-            if ( i === 3 ) {
-              return false;
-            }
-          });
-        });
-    })();
-    </script>
-</body
+    <p id="now_date"></p>
+    <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
+        <tr>
+            <th clsss="thcol">取引所</font></th>
+            <th clsss="thcol">Coincheck</font></th>
+            <th clsss="thcol">bitFlyer</font></th>
+            <th clsss="thcol">Zaif</font></th>
+            <th clsss="thcol">BtcBox</font></th>
+            <th clsss="thcol">Quoinex</font></th>
+            <th clsss="thcol">bitbank</font></th>
+        </tr>
+        <tr>
+            <td class="thcol">売却</td>
+            <td id="bid_Coincheck"></td>
+            <td id="bid_bitFlyer"></td>
+            <td id="bid_Zaif"></td>
+            <td id="bid_BtcBox"></td>
+            <td id="bid_Quoinex"></td>
+            <td id="bid_bitbank"></td>
+        </tr>
+        <tr>
+            <td class="thcol">購入</td>
+            <td id="ask_Coincheck"></td>
+            <td id="ask_bitFlyer"></td>
+            <td id="ask_Zaif"></td>
+            <td id="ask_BtcBox"></td>
+            <td id="ask_Quoinex"></td>
+            <td id="ask_bitbank"></td>
+        </tr>
+        <tr>
+            <td class="thcol">差額</td>
+            <td id="spread_Coincheck"></td>
+            <td id="spread_bitFlyer"></td>
+            <td id="spread_Zaif"></td>
+            <td id="spread_BtcBox"></td>
+            <td id="spread_Quoinex"></td>
+            <td id="spread_bitbank"></td>
+        </tr>
+    </table>
+
+
+  <p id="top_AskName" style="display:inline;"></p>（<p id="top_ask" style="display:inline;"></p> 円）で買って<p id="top_BidName" style="display:inline;"></p>（<p id="top_bid" style="display:inline;"></p><?= top_bid ?> 円）で売れば<p id="difference" style="display:inline;"></p><?= difference ?> 円の儲け
+
+
+
+</body>
 </html>
